@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bankco Template - Version Navigator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        .card h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #4caf50;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+        .badge-warning {
+            background: #ff9800;
+        }
+        .badge-info {
+            background: #2196f3;
+        }
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏦 Bankco Template Navigator</h1>
+        
+        <div class="section">
+            <h2 class="section-title">🎯 Main Dashboard Versions</h2>
+            <div class="grid">
+                <div class="card">
+                    <h2>Dashboard v1 <span class="badge">Main</span></h2>
+                    <p>Classic banking dashboard with sidebar navigation, card management, transaction history, and analytics widgets.</p>
+                    <div class="links">
+                        <a href="main_files/index.html" class="btn">Open Dashboard v1</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Dashboard v2 <span class="badge badge-info">Alternative</span></h2>
+                    <p>Modern dashboard layout with different widget arrangements and enhanced visual analytics.</p>
+                    <div class="links">
+                        <a href="main_files/index-2.html" class="btn">Open Dashboard v2</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Landing Page <span class="badge badge-warning">Marketing</span></h2>
+                    <p>Beautiful marketing landing page for promoting the banking/fintech platform to new users.</p>
+                    <div class="links">
+                        <a href="main_files/home.html" class="btn btn-secondary">Open Landing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">💼 Business Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <h2>My Wallet</h2>
+                    <p>Complete wallet management interface with balance overview, payment methods, and card management.</p>
+                    <div class="links">
+                        <a href="main_files/my-wallet.html" class="btn">View Wallet</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Transactions</h2>
+                    <p>Detailed transaction history with filters, search, and transaction details view.</p>
+                    <div class="links">
+                        <a href="main_files/transaction.html" class="btn">View Transactions</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Analytics</h2>
+                    <p>Advanced analytics dashboard with charts, graphs, and business intelligence.</p>
+                    <div class="links">
+                        <a href="main_files/analytics.html" class="btn">View Analytics</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Statistics</h2>
+                    <p>Statistical overview with performance metrics and growth indicators.</p>
+                    <div class="links">
+                        <a href="main_files/statistics.html" class="btn">View Statistics</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🔐 Authentication Pages</h2>
+            <div class="grid">
+                <div class="card">
+                    <h2>Sign In</h2>
+                    <p>Professional login page with form validation and social login options.</p>
+                    <div class="links">
+                        <a href="main_files/signin.html" class="btn">View Sign In</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Sign Up</h2>
+                    <p>Registration page with multi-step form and verification process.</p>
+                    <div class="links">
+                        <a href="main_files/signup.html" class="btn">View Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">⚙️ Additional Pages</h2>
+            <div class="grid">
+                <div class="card">
+                    <h2>Integrations</h2>
+                    <p>Third-party service integrations and API connections.</p>
+                    <div class="links">
+                        <a href="main_files/integrations.html" class="btn">View</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Messages</h2>
+                    <p>Internal messaging system with chat interface.</p>
+                    <div class="links">
+                        <a href="main_files/messages.html" class="btn">View</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Calendar</h2>
+                    <p>Event management and scheduling interface.</p>
+                    <div class="links">
+                        <a href="main_files/calender.html" class="btn">View</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Settings</h2>
+                    <p>User settings and preferences management.</p>
+                    <div class="links">
+                        <a href="main_files/settings.html" class="btn">View</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Support</h2>
+                    <p>Customer support ticket system.</p>
+                    <div class="links">
+                        <a href="main_files/support-ticket.html" class="btn">View</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Users</h2>
+                    <p>User management and administration.</p>
+                    <div class="links">
+                        <a href="main_files/users.html" class="btn">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Bankco Tailwind CSS Template - Ready for Next.js conversion</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Select your preferred version to proceed with development</p>
+        </div>
+    </div>
+</body>
+</html>
