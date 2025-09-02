@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+bower_components/
+vendor/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# System files
+.DS_Store
+Thumbs.db
+*.log
+*.pid
+*.swp
+*.swo
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Archives
+*.zip
+*.rar
+*.tar.gz
+*.7z
+
+# Large media files (if needed, use Git LFS)
+*.psd
+*.ai
+*.sketch
+*.fig
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.cache
+
+# OS generated files
+Desktop.ini
+.Spotlight-V100
+.Trashes
+
+# OLD files (temporary storage)
+OLD_FILES/
+
+# Package lock files (optional, можно оставить)
+# package-lock.json
+# yarn.lock
