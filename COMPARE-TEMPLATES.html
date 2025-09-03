@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Index - Template Comparison Navigator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #00d4ff 50%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            animation: glow 3s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .subtitle {
+            color: #888;
+            font-size: 1.2rem;
+        }
+        .template-section {
+            margin-bottom: 60px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #222;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-right: 20px;
+        }
+        .template-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .badge-fintech {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        .badge-it {
+            background: linear-gradient(135deg, #00d4ff, #0066cc);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #00d4ff);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        .card h3 {
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 1.3rem;
+        }
+        .card p {
+            color: #888;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            background: #222;
+            border: 1px solid #444;
+        }
+        .btn-secondary:hover {
+            background: #333;
+            border-color: #667eea;
+        }
+        .comparison-table {
+            background: #111;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 60px;
+            border: 1px solid #333;
+        }
+        .comparison-table h2 {
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background: #1a1a1a;
+            font-weight: 600;
+            color: #667eea;
+        }
+        tr:hover {
+            background: #1a1a1a;
+        }
+        .check {
+            color: #00ff88;
+        }
+        .cross {
+            color: #ff4444;
+        }
+        .recommendation {
+            background: linear-gradient(135deg, #667eea, #00d4ff);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .recommendation h2 {
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        .recommendation p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+        .status-live {
+            background: #00ff88;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">BRAIN INDEX</h1>
+            <p class="subtitle">Template Selection Navigator</p>
+        </div>
+
+        <!-- Template 1: Bankco Fintech -->
+        <div class="template-section">
+            <div class="section-header">
+                <h2 class="section-title">📁 Template 1: Bankco</h2>
+                <span class="template-badge badge-fintech">FINTECH</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Dashboard v1</h3>
+                    <p>Banking dashboard with card management, transactions, and analytics</p>
+                    <a href="templates/01-bankco-fintech/index.html" class="btn">Open Dashboard v1</a>
+                </div>
+                <div class="card">
+                    <h3>Dashboard v2</h3>
+                    <p>Alternative dashboard layout with enhanced widgets</p>
+                    <a href="templates/01-bankco-fintech/index-2.html" class="btn">Open Dashboard v2</a>
+                </div>
+                <div class="card">
+                    <h3>Landing Page</h3>
+                    <p>Marketing page for banking/fintech services</p>
+                    <a href="templates/01-bankco-fintech/home.html" class="btn">Open Landing</a>
+                </div>
+                <div class="card">
+                    <h3>My Wallet</h3>
+                    <p>Wallet management with payment methods</p>
+                    <a href="templates/01-bankco-fintech/my-wallet.html" class="btn btn-secondary">View</a>
+                </div>
+                <div class="card">
+                    <h3>Transactions</h3>
+                    <p>Transaction history and management</p>
+                    <a href="templates/01-bankco-fintech/transaction.html" class="btn btn-secondary">View</a>
+                </div>
+                <div class="card">
+                    <h3>Analytics</h3>
+                    <p>Financial analytics and reports</p>
+                    <a href="templates/01-bankco-fintech/analytics.html" class="btn btn-secondary">View</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template 2: Fainal-file IT/Business -->
+        <div class="template-section">
+            <div class="section-header">
+                <h2 class="section-title">📁 Template 2: Fainal-file</h2>
+                <span class="template-badge badge-it">IT/BUSINESS</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Landing v1</h3>
+                    <p>Main business landing page</p>
+                    <a href="templates/02-fainal-file/HTML/landing.html" class="btn">Open Landing v1</a>
+                </div>
+                <div class="card">
+                    <h3>Landing v2</h3>
+                    <p>Alternative landing design</p>
+                    <a href="templates/02-fainal-file/HTML/landing-2.html" class="btn">Open Landing v2</a>
+                </div>
+                <div class="card">
+                    <h3>Landing v6</h3>
+                    <p>Modern IT company layout</p>
+                    <a href="templates/02-fainal-file/HTML/landing-6.html" class="btn">Open Landing v6</a>
+                </div>
+                <div class="card">
+                    <h3>Services</h3>
+                    <p>IT services showcase</p>
+                    <a href="templates/02-fainal-file/HTML/service.html" class="btn btn-secondary">View Services</a>
+                </div>
+                <div class="card">
+                    <h3>Portfolio</h3>
+                    <p>Project portfolio gallery</p>
+                    <a href="templates/02-fainal-file/HTML/portfolio.html" class="btn btn-secondary">View Portfolio</a>
+                </div>
+                <div class="card">
+                    <h3>Team</h3>
+                    <p>Team members showcase</p>
+                    <a href="templates/02-fainal-file/HTML/team.html" class="btn btn-secondary">View Team</a>
+                </div>
+                <div class="card">
+                    <h3>About</h3>
+                    <p>Company information</p>
+                    <a href="templates/02-fainal-file/HTML/about.html" class="btn btn-secondary">View About</a>
+                </div>
+                <div class="card">
+                    <h3>Pricing</h3>
+                    <p>Service pricing plans</p>
+                    <a href="templates/02-fainal-file/HTML/pricing.html" class="btn btn-secondary">View Pricing</a>
+                </div>
+                <div class="card">
+                    <h3>Blog</h3>
+                    <p>Company blog system</p>
+                    <a href="templates/02-fainal-file/HTML/blog.html" class="btn btn-secondary">View Blog</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="comparison-table">
+            <h2>📊 Template Comparison</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Bankco (Fintech)</th>
+                        <th>Fainal-file (IT/Business)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Industry Focus</td>
+                        <td>Banking/Finance</td>
+                        <td>IT/Technology/Business</td>
+                    </tr>
+                    <tr>
+                        <td>Design Style</td>
+                        <td>Dashboard-focused</td>
+                        <td>Landing-focused</td>
+                    </tr>
+                    <tr>
+                        <td>Page Variations</td>
+                        <td>10 home versions</td>
+                        <td>10 landing + 10 home versions</td>
+                    </tr>
+                    <tr>
+                        <td>Framework</td>
+                        <td>Tailwind CSS</td>
+                        <td>Bootstrap/Custom</td>
+                    </tr>
+                    <tr>
+                        <td>Best For</td>
+                        <td>FinTech, Banking, PSP</td>
+                        <td><span class="check">✓</span> IT Companies, SaaS, B2B</td>
+                    </tr>
+                    <tr>
+                        <td>Portfolio Section</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Team Section</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Service Pages</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Blog System</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="recommendation">
+            <h2>🎯 Recommendation for Brain Index</h2>
+            <p>
+                <span class="status-indicator status-live"></span>
+                <strong>Fainal-file template</strong> appears more suitable for Brain Index as an IT holding company.
+                It has the necessary sections for showcasing multiple products, team, services, and portfolio.
+                However, review both templates thoroughly to make the final decision.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
