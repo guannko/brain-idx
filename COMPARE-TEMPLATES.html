@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain Index - Template Comparison Navigator</title>
+    <title>Brain Index - Ultimate Template Comparison Navigator</title>
     <style>
         * {
             margin: 0;
@@ -12,171 +12,116 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 20px;
         }
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         .header {
             text-align: center;
-            margin-bottom: 60px;
-            position: relative;
+            margin-bottom: 50px;
         }
-        .logo {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #00d4ff 50%, #667eea 100%);
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
-            animation: glow 3s ease-in-out infinite;
-        }
-        @keyframes glow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
         }
         .subtitle {
-            color: #888;
+            color: #666;
             font-size: 1.2rem;
         }
         .template-section {
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
-        .section-header {
+        .template-header {
             display: flex;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #222;
+            justify-content: space-between;
+            margin-bottom: 20px;
         }
-        .section-title {
-            font-size: 2rem;
-            margin-right: 20px;
+        .template-title {
+            font-size: 1.8rem;
+            color: #333;
         }
-        .template-badge {
-            padding: 5px 15px;
+        .badge {
+            padding: 8px 20px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            color: white;
             font-weight: 600;
+            font-size: 0.9rem;
         }
-        .badge-fintech {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-        .badge-it {
-            background: linear-gradient(135deg, #00d4ff, #0066cc);
-        }
-        .grid {
+        .badge-fintech { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .badge-it { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .badge-saas { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .badge-admin { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .badge-business { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
-        .card {
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #00d4ff);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            border-color: #667eea;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-        .card h3 {
-            margin-bottom: 10px;
-            color: #fff;
-            font-size: 1.3rem;
-        }
-        .card p {
-            color: #888;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-        .btn {
+        .link-btn {
             display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        .btn-secondary {
-            background: #222;
-            border: 1px solid #444;
-        }
-        .btn-secondary:hover {
-            background: #333;
-            border-color: #667eea;
-        }
-        .comparison-table {
-            background: #111;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 60px;
-            border: 1px solid #333;
-        }
-        .comparison-table h2 {
-            margin-bottom: 30px;
+            border-radius: 10px;
             text-align: center;
-            font-size: 2rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
         }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #333;
+        .link-btn.secondary {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
         }
-        th {
-            background: #1a1a1a;
-            font-weight: 600;
+        .features-list {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+        .features-list h4 {
+            margin-bottom: 10px;
             color: #667eea;
         }
-        tr:hover {
-            background: #1a1a1a;
+        .features-list ul {
+            list-style: none;
+            padding: 0;
         }
-        .check {
-            color: #00ff88;
+        .features-list li {
+            padding: 5px 0;
+            color: #666;
         }
-        .cross {
-            color: #ff4444;
+        .features-list li:before {
+            content: "✓ ";
+            color: #43e97b;
+            font-weight: bold;
         }
         .recommendation {
-            background: linear-gradient(135deg, #667eea, #00d4ff);
-            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             padding: 30px;
-            margin-top: 40px;
+            border-radius: 15px;
             text-align: center;
+            margin-top: 40px;
         }
         .recommendation h2 {
             margin-bottom: 15px;
@@ -186,194 +131,202 @@
             font-size: 1.1rem;
             line-height: 1.6;
         }
-        .status-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 10px;
-            animation: pulse 2s infinite;
+        .winner {
+            border: 3px solid #43e97b;
+            position: relative;
         }
-        .status-live {
-            background: #00ff88;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .winner::before {
+            content: "⭐ TOP CHOICE";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #43e97b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="logo">BRAIN INDEX</h1>
-            <p class="subtitle">Template Selection Navigator</p>
+            <h1>🚀 BRAIN INDEX</h1>
+            <p class="subtitle">Ultimate Template Selection Navigator - 7 Premium Options</p>
         </div>
 
-        <!-- Template 1: Bankco Fintech -->
+        <!-- Template 1: Bankco -->
         <div class="template-section">
-            <div class="section-header">
-                <h2 class="section-title">📁 Template 1: Bankco</h2>
-                <span class="template-badge badge-fintech">FINTECH</span>
+            <div class="template-header">
+                <h2 class="template-title">1️⃣ Bankco</h2>
+                <span class="badge badge-fintech">FINTECH</span>
             </div>
-            <div class="grid">
-                <div class="card">
-                    <h3>Dashboard v1</h3>
-                    <p>Banking dashboard with card management, transactions, and analytics</p>
-                    <a href="templates/01-bankco-fintech/index.html" class="btn">Open Dashboard v1</a>
-                </div>
-                <div class="card">
-                    <h3>Dashboard v2</h3>
-                    <p>Alternative dashboard layout with enhanced widgets</p>
-                    <a href="templates/01-bankco-fintech/index-2.html" class="btn">Open Dashboard v2</a>
-                </div>
-                <div class="card">
-                    <h3>Landing Page</h3>
-                    <p>Marketing page for banking/fintech services</p>
-                    <a href="templates/01-bankco-fintech/home.html" class="btn">Open Landing</a>
-                </div>
-                <div class="card">
-                    <h3>My Wallet</h3>
-                    <p>Wallet management with payment methods</p>
-                    <a href="templates/01-bankco-fintech/my-wallet.html" class="btn btn-secondary">View</a>
-                </div>
-                <div class="card">
-                    <h3>Transactions</h3>
-                    <p>Transaction history and management</p>
-                    <a href="templates/01-bankco-fintech/transaction.html" class="btn btn-secondary">View</a>
-                </div>
-                <div class="card">
-                    <h3>Analytics</h3>
-                    <p>Financial analytics and reports</p>
-                    <a href="templates/01-bankco-fintech/analytics.html" class="btn btn-secondary">View</a>
-                </div>
+            <div class="links-grid">
+                <a href="templates/01-bankco-fintech/index.html" class="link-btn">Dashboard v1</a>
+                <a href="templates/01-bankco-fintech/index-2.html" class="link-btn">Dashboard v2</a>
+                <a href="templates/01-bankco-fintech/home.html" class="link-btn">Landing Page</a>
+                <a href="templates/01-bankco-fintech/my-wallet.html" class="link-btn secondary">Wallet</a>
+                <a href="templates/01-bankco-fintech/transaction.html" class="link-btn secondary">Transactions</a>
+            </div>
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Banking dashboard with analytics</li>
+                    <li>Transaction management</li>
+                    <li>Wallet system</li>
+                    <li>Tailwind CSS based</li>
+                </ul>
             </div>
         </div>
 
-        <!-- Template 2: Fainal-file IT/Business -->
+        <!-- Template 2: Fainal-file -->
         <div class="template-section">
-            <div class="section-header">
-                <h2 class="section-title">📁 Template 2: Fainal-file</h2>
-                <span class="template-badge badge-it">IT/BUSINESS</span>
+            <div class="template-header">
+                <h2 class="template-title">2️⃣ Fainal-file</h2>
+                <span class="badge badge-it">IT/BUSINESS</span>
             </div>
-            <div class="grid">
-                <div class="card">
-                    <h3>Landing v1</h3>
-                    <p>Main business landing page</p>
-                    <a href="templates/02-fainal-file/HTML/landing.html" class="btn">Open Landing v1</a>
-                </div>
-                <div class="card">
-                    <h3>Landing v2</h3>
-                    <p>Alternative landing design</p>
-                    <a href="templates/02-fainal-file/HTML/landing-2.html" class="btn">Open Landing v2</a>
-                </div>
-                <div class="card">
-                    <h3>Landing v6</h3>
-                    <p>Modern IT company layout</p>
-                    <a href="templates/02-fainal-file/HTML/landing-6.html" class="btn">Open Landing v6</a>
-                </div>
-                <div class="card">
-                    <h3>Services</h3>
-                    <p>IT services showcase</p>
-                    <a href="templates/02-fainal-file/HTML/service.html" class="btn btn-secondary">View Services</a>
-                </div>
-                <div class="card">
-                    <h3>Portfolio</h3>
-                    <p>Project portfolio gallery</p>
-                    <a href="templates/02-fainal-file/HTML/portfolio.html" class="btn btn-secondary">View Portfolio</a>
-                </div>
-                <div class="card">
-                    <h3>Team</h3>
-                    <p>Team members showcase</p>
-                    <a href="templates/02-fainal-file/HTML/team.html" class="btn btn-secondary">View Team</a>
-                </div>
-                <div class="card">
-                    <h3>About</h3>
-                    <p>Company information</p>
-                    <a href="templates/02-fainal-file/HTML/about.html" class="btn btn-secondary">View About</a>
-                </div>
-                <div class="card">
-                    <h3>Pricing</h3>
-                    <p>Service pricing plans</p>
-                    <a href="templates/02-fainal-file/HTML/pricing.html" class="btn btn-secondary">View Pricing</a>
-                </div>
-                <div class="card">
-                    <h3>Blog</h3>
-                    <p>Company blog system</p>
-                    <a href="templates/02-fainal-file/HTML/blog.html" class="btn btn-secondary">View Blog</a>
-                </div>
+            <div class="links-grid">
+                <a href="templates/02-fainal-file/HTML/landing.html" class="link-btn">Landing v1</a>
+                <a href="templates/02-fainal-file/HTML/landing-2.html" class="link-btn">Landing v2</a>
+                <a href="templates/02-fainal-file/HTML/landing-6.html" class="link-btn">Landing v6</a>
+                <a href="templates/02-fainal-file/HTML/service.html" class="link-btn secondary">Services</a>
+                <a href="templates/02-fainal-file/HTML/portfolio.html" class="link-btn secondary">Portfolio</a>
+                <a href="templates/02-fainal-file/HTML/team.html" class="link-btn secondary">Team</a>
+                <a href="templates/02-fainal-file/HTML/about.html" class="link-btn secondary">About</a>
+                <a href="templates/02-fainal-file/HTML/pricing.html" class="link-btn secondary">Pricing</a>
+            </div>
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>10 landing page variations</li>
+                    <li>Portfolio showcase</li>
+                    <li>Team & service pages</li>
+                    <li>Blog system included</li>
+                </ul>
             </div>
         </div>
 
-        <!-- Comparison Table -->
-        <div class="comparison-table">
-            <h2>📊 Template Comparison</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Feature</th>
-                        <th>Bankco (Fintech)</th>
-                        <th>Fainal-file (IT/Business)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Industry Focus</td>
-                        <td>Banking/Finance</td>
-                        <td>IT/Technology/Business</td>
-                    </tr>
-                    <tr>
-                        <td>Design Style</td>
-                        <td>Dashboard-focused</td>
-                        <td>Landing-focused</td>
-                    </tr>
-                    <tr>
-                        <td>Page Variations</td>
-                        <td>10 home versions</td>
-                        <td>10 landing + 10 home versions</td>
-                    </tr>
-                    <tr>
-                        <td>Framework</td>
-                        <td>Tailwind CSS</td>
-                        <td>Bootstrap/Custom</td>
-                    </tr>
-                    <tr>
-                        <td>Best For</td>
-                        <td>FinTech, Banking, PSP</td>
-                        <td><span class="check">✓</span> IT Companies, SaaS, B2B</td>
-                    </tr>
-                    <tr>
-                        <td>Portfolio Section</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Team Section</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Service Pages</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Blog System</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="check">✓</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Template 3: UIdeck Play -->
+        <div class="template-section winner">
+            <div class="template-header">
+                <h2 class="template-title">3️⃣ UIdeck Play Bootstrap</h2>
+                <span class="badge badge-saas">SAAS/STARTUP</span>
+            </div>
+            <div class="links-grid">
+                <a href="templates/03-uideck-play/index.html" class="link-btn">Main Landing</a>
+                <a href="templates/03-uideck-play/about.html" class="link-btn">About</a>
+                <a href="templates/03-uideck-play/pricing.html" class="link-btn">Pricing</a>
+                <a href="templates/03-uideck-play/blog.html" class="link-btn secondary">Blog</a>
+                <a href="templates/03-uideck-play/contact.html" class="link-btn secondary">Contact</a>
+                <a href="templates/03-uideck-play/login.html" class="link-btn secondary">Login</a>
+            </div>
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Modern SaaS/Startup design</li>
+                    <li>Bootstrap 5 based</li>
+                    <li>Complete page set</li>
+                    <li>100% free & open source</li>
+                    <li>Perfect for IT companies</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Template 4: MDBootstrap -->
+        <div class="template-section">
+            <div class="template-header">
+                <h2 class="template-title">4️⃣ MDBootstrap SaaS</h2>
+                <span class="badge badge-saas">MATERIAL DESIGN</span>
+            </div>
+            <div class="links-grid">
+                <a href="templates/04-mdbootstrap-saas/landing-page.html" class="link-btn">Landing Page</a>
+                <a href="templates/04-mdbootstrap-saas/blog.html" class="link-btn">Blog</a>
+                <a href="templates/04-mdbootstrap-saas/e-commerce.html" class="link-btn secondary">E-commerce</a>
+                <a href="templates/04-mdbootstrap-saas/portfolio.html" class="link-btn secondary">Portfolio</a>
+            </div>
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Material Design components</li>
+                    <li>400+ UI elements</li>
+                    <li>Bootstrap 4 based</li>
+                    <li>MIT license</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Template 5: Star Admin -->
+        <div class="template-section">
+            <div class="template-header">
+                <h2 class="template-title">5️⃣ Star Admin 2</h2>
+                <span class="badge badge-admin">ADMIN PANEL</span>
+            </div>
+            <div class="links-grid">
+                <a href="templates/05-star-admin/template/index.html" class="link-btn">Dashboard</a>
+                <a href="templates/05-star-admin/template/pages/tables/basic-table.html" class="link-btn">Tables</a>
+                <a href="templates/05-star-admin/template/pages/forms/basic_elements.html" class="link-btn secondary">Forms</a>
+                <a href="templates/05-star-admin/template/pages/charts/chartjs.html" class="link-btn secondary">Charts</a>
+            </div>
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Clean admin dashboard</li>
+                    <li>Bootstrap 5 based</li>
+                    <li>Multiple components</li>
+                    <li>Perfect for admin panel</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Template 6: Capsule -->
+        <div class="template-section">
+            <div class="template-header">
+                <h2 class="template-title">6️⃣ Capsule</h2>
+                <span class="badge badge-business">BUSINESS</span>
+            </div>
+            <div class="links-grid">
+                <a href="templates/06-capsule/index.html" class="link-btn">Homepage</a>
+            </div>
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Modern business template</li>
+                    <li>Vibrant gradients</li>
+                    <li>Bootstrap 5</li>
+                    <li>Single page starter</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Template 7: Euphoria -->
+        <div class="template-section">
+            <div class="template-header">
+                <h2 class="template-title">7️⃣ Euphoria</h2>
+                <span class="badge badge-business">MINIMALIST</span>
+            </div>
+            <div class="links-grid">
+                <a href="templates/07-euphoria/index.html" class="link-btn">Homepage</a>
+            </div>
+            <div class="features-list">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Clean minimalist design</li>
+                    <li>Light color scheme</li>
+                    <li>Bootstrap 5</li>
+                    <li>Single page starter</li>
+                </ul>
+            </div>
         </div>
 
         <!-- Recommendation -->
         <div class="recommendation">
-            <h2>🎯 Recommendation for Brain Index</h2>
+            <h2>🎯 Recommended Solution for Brain Index</h2>
             <p>
-                <span class="status-indicator status-live"></span>
-                <strong>Fainal-file template</strong> appears more suitable for Brain Index as an IT holding company.
-                It has the necessary sections for showcasing multiple products, team, services, and portfolio.
-                However, review both templates thoroughly to make the final decision.
+                <strong>Primary Choice:</strong> UIdeck Play Bootstrap (Template #3) for the main website<br>
+                <strong>Admin Panel:</strong> Star Admin 2 (Template #5) for the dashboard<br><br>
+                This combination provides a modern SaaS/IT company frontend with a professional admin backend.
+                Both are Bootstrap 5 based, making integration easier.
             </p>
         </div>
     </div>
